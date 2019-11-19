@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomStamps.CustomStampsView_Mobile"
+             xmlns:expander="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+              xmlns:cr="clr-namespace:PDFViewerSample.Helper"
+           >
+    <ContentView.Content>
+        <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Static GridLength.Auto}"></RowDefinition>
+                    <RowDefinition Height="{Static GridLength.Auto}"></RowDefinition>
+                    <RowDefinition Height="{Static GridLength.Auto}"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label x:Name="Message" Grid.Row="0" FontSize="Small" TextColor="Red" Text="* Click on any custom stamp to add it into the page." ></Label>
+                <expander:SfExpander x:Name="StandardStampsExpander" IsExpanded="True" Grid.Row="1" >
+                    <expander:SfExpander.Header>
+                        <Grid HeightRequest="50" >
+                            <Label x:Name="StandardStamps" Text="Standard(Images)"  FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+                        </Grid>
+                    </expander:SfExpander.Header>
+                    <expander:SfExpander.Content>
+                        <Grid HeightRequest="170" Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="Approved" Source="Approved.png" Grid.Column="0" Grid.Row="0" Aspect="Fill" />
+                            <Image x:Name="Confidential" Source="Confidential.png" Grid.Column="1" Grid.Row="0" Aspect="Fill" />
+                            <Image x:Name="Draft" Source="Draft.png" Grid.Column="0" Grid.Row="1" Aspect="Fill" />
+                            <Image x:Name="Expired" Source="Expired.png" Grid.Column="1" Grid.Row="1" Aspect="Fill" />
+                            <Image x:Name="NotApproved" Source="NotApproved.png" Grid.Column="0" Grid.Row="2" Aspect="Fill"/>
+                        </Grid>
+                    </expander:SfExpander.Content>
+                </expander:SfExpander>
+                <expander:SfExpander x:Name="DynamicStampsExpander" IsExpanded="True" Grid.Row="2" >
+                    <expander:SfExpander.Header >
+                        <Grid HeightRequest="50"  >
+                            <Label x:Name="DynamicStamps" Text="Dynamic"  FontSize="Medium" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
+                        </Grid>
+                    </expander:SfExpander.Header>
+                    <expander:SfExpander.Content>
+                        <Grid Padding="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{Static GridLength.Auto}"></RowDefinition>
+                                <RowDefinition Height="{Static GridLength.Auto}"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid x:Name="DynamicApproved" Grid.Column="0" Grid.Row="0">
+                                <Image Grid.Column="0" Grid.Row="0" x:Name="DynamicApprovedImage" Source="DynamicApproved.png" Aspect="Fill" />
+                                <Label Grid.Column="0" Grid.Row="0" x:Name="DynamicApprovedLabel" Margin="10,0,0,5" FontSize="Large" TextColor="ForestGreen" VerticalOptions="End" HorizontalOptions="FillAndExpand"  FontAttributes="Italic"  VerticalTextAlignment="Center"></Label>
+                            </Grid>
+                            <Grid x:Name="DynamicExpired" Grid.Column="0"   Grid.Row="1">
+                                <Image Grid.Column="0" Grid.Row="0" x:Name="DynamicExpiredImage" Source="DynamicExpired.png" Aspect="Fill" />
+                                <Label Grid.Column="0" Grid.Row="0" x:Name="DynamicExpiredLabel" Margin="10,0,0,5" FontSize="Large" TextColor="DarkBlue" FontAttributes="Italic" VerticalOptions="End" HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center" ></Label>
+                            </Grid>
+                        </Grid>
+                    </expander:SfExpander.Content>
+                </expander:SfExpander>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

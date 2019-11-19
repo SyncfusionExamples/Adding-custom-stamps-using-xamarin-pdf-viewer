@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Invoice.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Invoice.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.3.0.26" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="17.3.0.26" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="17.3.0.26" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="17.3.0.26" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRangeSlider" Version="17.3.0.26" />
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\PdfViewerView.xaml.cs">
+      <DependentUpon>PdfViewerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CustomStampsView_Mobile.xaml.cs">
+      <DependentUpon>CustomStampsView_Mobile.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CustomStampsView_Desktop.xaml.cs">
+      <DependentUpon>CustomStampsView_Desktop.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\PdfViewerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CustomStampsView_Desktop.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CustomStampsView_Mobile.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomStamps.PdfViewerView"
+              xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms"
+              xmlns:local="clr-namespace:CustomStamps"
+             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
+              xmlns:expander="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             xmlns:cr="clr-namespace:CustomStamps">
+    <ContentPage.BindingContext>
+        <local:PdfViewerViewModel></local:PdfViewerViewModel>
+    </ContentPage.BindingContext>
+    <sfPopup:SfPopupLayout x:Name="PopupLayout">
+        <sfPopup:SfPopupLayout.Content>
+            <Grid x:Name="MainGrid">
+                <Grid.RowDefinitions>                    
+                    <RowDefinition Height="{Static GridLength.Star}" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="CustomStampPopupView"></Grid>
+                <Grid Grid.Row="0"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" x:Name="TopToolbar" BackgroundColor="#1777D6" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" x:Name="PDFViewer" Text="Custom Stamps" Margin="5,0,0,0" TextColor="White" FontSize="Medium" VerticalOptions="Center"></Label>
+                        <cr:SfFontButton Grid.Column="1" Grid.Row="0" x:Name="StampButton"  FontFamily="{x:Static cr:FontMappingHelper.StampFont}"  Text="{x:Static cr:FontMappingHelper.Stamp}" BackgroundColor="Transparent" FontSize="24" TextColor="White"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="StampButton_Clicked"></cr:SfFontButton>
+                        <cr:SfFontButton Grid.Column="2" Grid.Row="0" x:Name="SaveButton"  FontSize="30" TextColor="White" FontFamily="{x:Static cr:FontMappingHelper.FontFamily}" Text="{x:Static cr:FontMappingHelper.Save}"  BackgroundColor="Transparent"  HorizontalOptions="Center" VerticalOptions="Center" Clicked="SaveButton_Clicked"></cr:SfFontButton>
+                    </Grid>
+                    <Grid Grid.Row="1" x:Name="PdfViewerGrid">
+                        <syncfusion:SfPdfViewer x:Name="PdfViewerControl" InputFileStream="{Binding PdfDocumentStream}" />
+                    </Grid>
+                    <Grid Grid.Row="2" x:Name="BottomToolBar" HorizontalOptions="FillAndExpand" BackgroundColor="#1777D6">
+                        <cr:SfFontButton  x:Name="DeleteButton" FontSize="30" TextColor="White" FontFamily="{x:Static cr:FontMappingHelper.FontFamily}" Text="{x:Static cr:FontMappingHelper.Delete}"  BackgroundColor="Transparent"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="Delete_Clicked" ></cr:SfFontButton>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </sfPopup:SfPopupLayout.Content>
+    </sfPopup:SfPopupLayout>
+</ContentPage>
