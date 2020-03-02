@@ -49,10 +49,17 @@ namespace CustomStamps
             DeleteButton.IsVisible = true;
         }
 
-        private void SaveButton_Clicked(object sender, EventArgs e)
+        private async void SaveButton_Clicked(object sender, EventArgs e)
         {
-
-            Stream savedStream = PdfViewerControl.SaveDocument();
+            Stream savedStream = null;
+            if (Device.RuntimePlatform == Device.UWP)
+            {
+                savedStream = await PdfViewerControl.SaveDocumentAsync();
+            }
+            else
+            {
+                savedStream = PdfViewerControl.SaveDocument();
+            }
             string filePath = DependencyService.Get<ISave>().Save(savedStream as MemoryStream);
             string message = "The PDF has been saved to " + filePath;
             DependencyService.Get<IAlertView>().Show(message);
